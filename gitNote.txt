@@ -19,15 +19,94 @@ git diff HEAD：是查看working tree和repository的差别的。其中：HEAD�
  Git管理的文件分为：工作区，版本库，版本库又分为暂存区stage和暂存区分支master(仓库)
 工作区>>>>暂存区>>>>仓库
 
-git add把文件从工作区>>>>暂存区，git commit把文件从暂存区>>>>仓库，
+git add把文件从工作区>>>>暂存区，git commit把文件从暂存区>>>>仓库， git add readme.txt把文件添加到仓库：
 git diff查看工作区和暂存区差异，
 git diff --cached查看暂存区和仓库差异，
 git diff HEAD 查看工作区和仓库的差异，
 git add的反向命令git checkout，撤销工作区修改，即把暂存区最新版本转移到工作区，
 git commit的反向命令git reset HEAD，就是把仓库最新版本转移到暂存区。
+$ git commit -m“change something”	git commit告诉Git，把文件提交到仓库
 
 
 rm test.txt 或者直接在文件管理器中把没用的文件删了；git status命令会立刻告诉你哪些文件被删除了
 A.确实要从版本库中删除该文件，那就用命令git rm 文件名 删掉，并且git commit
-B.另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：git checkout -- test.txt
+B.另一种情况是删错了，但版本库里还有呢，所以还可以把误删的文件恢复到最新版本：git checkout -- test.txt
+** 注意：从来没有被添加到版本库就被删除的文件，是无法恢复的！
+
+
+GitHub：远程仓库
+Username：mpgit0505
+1、创建SSH Key:
+	使用命令： ls -al ~/.ssh
+	使用命令： ssh-keygen -t rsa -C “mpgit0505”，mpgit0505换成github用户名，按三次回车（使用默认设置）
+	查看生成的key：cat ~/.ssh/id_rsa.pub
+
+2、设置SSH Key的秘钥 
+	登陆GitHub，点击头像“settings”，“SSH Keys”页面：然后，点“SSH and key” ->"New SHH key"，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容：(以ssh-rsa开始的)	（GitHub允许你添加多个Key。假定你有若干电脑，既要在公司提交，又在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了。）
+
+3、添加远程库
+	GitHub上创建Git仓库repository，点击右上角 +号->NEW repository-> Repository name：Mygit（库名字）其他保持默认就可以
+	然后在本地的GitFiles仓库下运行命令：
+		$ git remote add origin git@github.com:mpgit0505/Mygit.git  (mpgit0505 换成自己的GitHub账户名)
+	添加后，远程库的名字就是origin，这是Git默认的叫法，也可以改成别的
+	添加时git报错：'fatal:remote origin already exists'怎么处理？
+		1、先删除：
+			$ git remote rm origin
+		2、再次执行添加就可以了。
+	下一步，就可以把本地库的所有内容master分支推送到远程库上：
+		$ git push -u origin master
+	'''
+		第一次使用Git的clone或者push命令连接GitHub时，会得到一个警告：
+		The authenticity of host 'github.com (xx.xx.xx.xx)' can't be established.
+		RSA key fingerprint is xx.xx.xx.xx.xx.
+		Are you sure you want to continue connecting (yes/no)?	这是因为Git使用SSH连接，而SSH连接在第一次验证GitHub服务器的Key时，需要你确认GitHub的Key的指纹信息是否真的来自GitHub的服务器，输入yes回车即可。
+		
+		把本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程。		由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。
+	'''
+	推送成功后，可以立刻在GitHub页面中看到远程库的内容已经和本地一模一样
+	只要本地作了提交，就可以通过命令：
+		$ git push origin master
+	把本地master分支的最新修改推送至GitHub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
