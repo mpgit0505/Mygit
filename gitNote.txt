@@ -177,6 +177,24 @@ Feature分支
 			$ git branch -D feature-vulcan
 		Deleted branch feature-vulcan (was 287773e).终于删除成功！
 
+多人协作
+	要查看远程库的信息，用git remote，或者，用git remote -v显示更详细的信息：：
+		$ git remote
+		$ git push origin master 推送分支，就是把该分支上的所有本地提交推送到远程库如果要推送其他分支，比如dev，就改成：
+		$ git push origin dev
+	master分支是主分支，因此要时刻与远程同步；
+	dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；
+	bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；
+	feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。
+
+
+
+
+
+
+
+
+
 
 
 
