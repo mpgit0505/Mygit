@@ -1,5 +1,9 @@
 参考：https://www.liaoxuefeng.com/wiki/896043488029600
 
+Git：
+user.name：mpgit0505
+user.email：2351797655@qq.com
+
 创建：
  cd D:/GitFlies
  mkdir learngit
@@ -12,9 +16,18 @@
 >
 直接回车返回上一级目录
 
-
 test01测试，vi进行编辑文件；按ESC退出状态时连按灵犀大写字母Z
 
+'''
+修改本地后推到远程库：
+git status
+git add gitNote.txt
+git commit -m“change something”
+$ git push origin master
+从已有的远程库拉取：
+git clone git@github.com:mpgit0505/Mygit
+
+'''
 
 工作区（working tree），暂存区（index /stage），本地仓库（repository）
 git跟不同的参数，比较不同的区间的版本。
@@ -50,7 +63,7 @@ Username：mpgit0505
 	使用命令： ssh-keygen -t rsa -C “mpgit0505”，mpgit0505换成github用户名，按三次回车（使用默认设置）
 	查看生成的key：cat ~/.ssh/id_rsa.pub
 
-2、设置SSH Key的秘钥 
+2、设置SSH Key的秘钥
 	登陆GitHub，点击头像“settings”，“SSH Keys”页面：然后，点“SSH and key” ->"New SHH key"，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容：(以ssh-rsa开始的)	（GitHub允许你添加多个Key。假定你有若干电脑，既要在公司提交，又在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了。）
 
 3、添加远程库
