@@ -23,7 +23,7 @@ test01测试，vi进行编辑文件；按ESC退出状态时连按灵犀大写字
 git status
 git add gitNote.txt
 git commit -m“change something”
-$ git push origin master
+git push origin master
 从已有的远程库拉取：
 git clone git@github.com:mpgit0505/Mygit
 
