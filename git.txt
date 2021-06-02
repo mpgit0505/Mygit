@@ -2,7 +2,6 @@ Git账户：
 Git：
 user.name：mpgit0505
 user.email：2351797655@qq.com
-0505puPU
 
 保证上传的代码没问题，现在cmd运行一遍，保证没问题
 
