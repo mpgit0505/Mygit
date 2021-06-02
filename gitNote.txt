@@ -1,5 +1,5 @@
 参考：https://www.liaoxuefeng.com/wiki/896043488029600
-
+下载Git  官方地址为：https://git-scm.com/download/win
 Git：
 user.name：mpgit0505
 user.email：2351797655@qq.com
@@ -29,7 +29,7 @@ git clone git@github.com:mpgit0505/Mygit
 
 '''
 
-工作区（working tree），暂存区（index /stage），本地仓库（repository）
+工作区（working tree），暂存区（index /stage），本地仓库（repository），远程仓库（remote）
 git跟不同的参数，比较不同的区间的版本。
 git diff：是查看working tree与index的差别的。
 git diff --cached：是查看index与repository的差别的。

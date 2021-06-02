@@ -1,0 +1,83 @@
+Git账户：
+Git：
+user.name：mpgit0505
+user.email：2351797655@qq.com
+0505puPU
+
+保证上传的代码没问题，现在cmd运行一遍，保证没问题
+
+Git客户端安装：https://git-scm.com/download/win
+https://git-scm.com/downloads
+加入环境变量路径：D:\Files\Git\bin
+
+
+一、提交代码到GitHub
+1、创建仓库
+点击右上角 +号->NEW repository-> Repository name -> 创建仓库
+在本地创建一个文件夹(本地版本库)：git_pytest机进入cmd，后面代码放到这上传GitHub上
+	1.1 git branch 查看当前分支
+	1.2  git branch -r 查看远程仓库
+2、执行：git init  在本地创建一仓库,通过init命令把这个目录变成Git可以管理的本地仓库
+3、git add README.md   git add * 添加任意文件，把要上传的文件添加到仓库，然后查看一下 git status ；
+4、git commit -m "first commit" 提交添加，可备注描述
+5、git branch -M main 重命名git本地分支,更名为mian（不修改就是origin）
+6、git remote add origin https://github.com/mpgit0505/git_test01.git  把当前代码提交到远程仓库（本地仓库与远程仓库关联）
+	提交到远程时候，提示：fatal: remote origin already exists.
+	解决办法：删除远程git仓库再次添加即可
+	>git remote rm origin
+	git remote add origin git@github.com:mpgit0505/git_test01.git  
+7、git push -u origin main  把当前分支master（本地仓库）推送到远程仓库
+首次提交可能会让提交用户名密码，输入密码时不可见，输入直接回车即可
+8、git push origin master  下次本地作了提交，就可以通过命令把本地master分支的最新修改推送至GitHub
+
+二、把GitHub代码clone到本地
+1、在本地建个文件夹git_clone，地址栏输入cmd打开终端
+2、然后输入指令：git clone https://github.com/gitname/xxx.git 就会拉取对应远程库中文件
+3、比如：git clone https://github.com/mpgit0505/git_test01.git 
+
+三、更新master上的代码
+1.git  status 
+2.git add *
+3.git commit  –m  “updata detail”
+4.git pull （拉取远程最新代码）  git pull origin master
+5.git push origin master
+
+
+四、Pycharm中提交和拉取
+拉取：
+1、先自己注册github账号，本地安装git环境，打开Pycharm-File-Settings-Version control-Git设置页面
+2、找到VCS-Checkoutfrom Version Control-Git。输入远程代码Git的http链接和要保存的本地路径-clone
+提交：
+1、VCS-Git-Commit File-填写commit message和Author-commit - push
+2、如果其他同事有更新代码，提交先pull 后push
+正常流程是：VCS-Add-Commit-VCS Git Pull-Push
+
+
+五、新建分支
+1、VCS-Git-Branch-New Branch-命名创建后当前分支就处于新建的分支了，commit-push就可以看到提交到当前分支了；
+	1.1Checkout切换分支
+2、当前分支push后但是 master 分支上并没有，接下来把分支合并到 master 分支。
+
+
+
+
+六、持续化集成：
+Windows环境下安装Jenkins，参考：https://blog.csdn.net/weixin_43184774/article/details/104428244
+	1、下载安装地址：https://www.jenkins.io/download/ （推荐下载jenkin.msi安装程序，war包是通过命令行安装）
+	2、双击运行已经下载好的jenkins.msi安装包，一路next选择安装路径，选择"Run service as LocalSystem(not recommended)"，点击“Next”，端口号做下修改8383，点击TestPort，一直到"Finish"后，根据浏览器中的路径提示找到Jenkins.jenkins\secrets\initialAdminPassword文件，编辑器打开复制密码解锁Jenkins。
+	3.安装注意踩坑：Jenkins requires Java versions [8, 11] but you are running with Java 12 from D:\Files\Java\jdk-12.0.1
+启动Jenkins：
+	注意要进度jenkins所在的war包下启动，即jenkins.war，执行：java -jar jenkins.war
+	打开localhost：8383验证
+
+新建：
+	1.输入名称-选择自由风格项目-源码管理选择Git-输入url地址-
+	2.构建触发器选择“Poll SCM”，*/5 * * * * 代表没5分钟检测一次轮询-
+	3.构建，根据系统Mac选择Execute shell，windows选择Execute Windows batch command，输入pytest-
+	4.构建后操作可选择Allure报告和发邮件，Allure Report的path根据代码中文件：report
+	邮件配置选择Editable Email Notification-选择右下角高级添加配置Trigger-发动方式可选择Always一直发送-高级，配置Recipient List收件人邮箱地址，多个邮箱一逗号分隔
+
+
+
+
+
